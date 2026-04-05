@@ -10,6 +10,7 @@ dependencies = [
     "langchain-anthropic>=0.2.0",
     "networkx>=3.2",
     "numpy>=1.26",
+    "scipy>=1.11",
     "pydantic>=2.5",
     "python-dotenv>=1.0",
     "structlog>=24.0",
