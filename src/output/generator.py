@@ -122,7 +122,7 @@ class StrategyGenerator:
         risk_factors = self._generate_risk_factors(personas, top_opportunities)
 
         strategy = PersuasionStrategy(
-            name=f"Strategy: {goal[:30]}",
+            name=f"Strategy: {goal}",
             topic=final_state.get("topic", ""),
             goal=goal,
             target_profiles=target_profiles,
@@ -168,13 +168,13 @@ class StrategyGenerator:
             key_values = []
             if persona.belief_graph:
                 values = persona.belief_graph.get_values()
-                key_values = [v.concept[:50] for v in values[:3]]
+                key_values = [v.concept for v in values[:3]]
 
             # Get vulnerability areas
             vulnerability_areas = []
             if persona.belief_graph:
                 vulnerable = persona.belief_graph.get_vulnerable_nodes(threshold=0.5)
-                vulnerability_areas = [v.concept[:50] for v in vulnerable[:3]]
+                vulnerability_areas = [v.concept for v in vulnerable[:3]]
 
             # Calculate compatibility with others
             compatibility = {}
@@ -365,7 +365,7 @@ class StrategyGenerator:
         lines = ["Recommended sequence:"]
         for i, intervention in enumerate(sorted_interventions, 1):
             lines.append(
-                f"{i}. {intervention.target_agent}: {intervention.target_topic[:30]} "
+                f"{i}. {intervention.target_agent}: {intervention.target_topic} "
                 f"(effectiveness: {intervention.estimated_effectiveness:.0%})"
             )
 
@@ -397,7 +397,7 @@ class StrategyGenerator:
         # Add opportunity-specific indicators
         for opp in opportunities[:2]:
             indicators.append(
-                f"Position shift by {opp.target_agent} on {opp.topic[:30]}"
+                f"Position shift by {opp.target_agent} on {opp.topic}"
             )
 
         return indicators
@@ -427,7 +427,7 @@ class StrategyGenerator:
         for opp in opportunities:
             if opp.resistance_expected > 0.8:
                 risks.append(
-                    f"High resistance expected for {opp.target_agent} on {opp.topic[:30]}"
+                    f"High resistance expected for {opp.target_agent} on {opp.topic}"
                 )
 
         # General risks
@@ -458,7 +458,7 @@ class StrategyGenerator:
             Generated CampaignPlan
         """
         plan = CampaignPlan(
-            name=f"Campaign: {strategy.goal[:30]}",
+            name=f"Campaign: {strategy.goal}",
             overall_goal=strategy.goal,
             base_strategy=strategy,
         )

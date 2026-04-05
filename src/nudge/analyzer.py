@@ -125,7 +125,7 @@ class NudgeAnalyzer:
         for edge_vuln in vulnerable_edges:
             opportunity = NudgeOpportunity(
                 target_agent=persona.name,
-                topic=edge_vuln.target_concept[:50],
+                topic=edge_vuln.target_concept,
                 strategy_type=AttackStrategy.EDGE_ATTACK,
                 technique=ChoiceArchitectureTechnique.FRAMING,
                 entry_point=edge_vuln.source_concept,
@@ -197,7 +197,7 @@ class NudgeAnalyzer:
 
         return NudgeOpportunity(
             target_agent=agent_name,
-            topic=node.concept[:50],
+            topic=node.concept,
             strategy_type=strategy,
             technique=technique,
             target_belief=node.concept,
@@ -236,7 +236,7 @@ class NudgeAnalyzer:
 
         return NudgeOpportunity(
             target_agent=agent_name,
-            topic=target_concept[:50],
+            topic=target_concept,
             strategy_type=AttackStrategy.PERIPHERAL_ENTRY,
             technique=ChoiceArchitectureTechnique.ANCHORING,
             entry_point=entry_concept,

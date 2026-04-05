@@ -151,7 +151,7 @@ class InterventionGenerator:
         risks = self._generate_risk_factors(opportunity)
 
         return Intervention(
-            name=f"Intervention: {opportunity.topic[:30]}",
+            name=f"Intervention: {opportunity.topic}",
             target_agent=opportunity.target_agent,
             target_topic=opportunity.topic,
             strategy=opportunity.strategy_type,
@@ -239,7 +239,7 @@ Ensure the message:
             Intervention object
         """
         intervention = Intervention(
-            name=f"Intervention: {opportunity.topic[:30]}",
+            name=f"Intervention: {opportunity.topic}",
             target_agent=opportunity.target_agent,
             target_topic=opportunity.topic,
             strategy=opportunity.strategy_type,
@@ -489,7 +489,7 @@ Ensure the message:
             InterventionPlan object
         """
         plan = InterventionPlan(
-            name=f"Plan: {goal[:30]}",
+            name=f"Plan: {goal}",
             goal=goal,
             target_agents=list(set(o.target_agent for o in opportunities)),
         )
@@ -545,7 +545,7 @@ Ensure the message:
 
         for i, intervention in enumerate(sorted_interventions, 1):
             notes.append(
-                f"  {i}. {intervention.target_agent}: {intervention.target_topic[:30]}"
+                f"  {i}. {intervention.target_agent}: {intervention.target_topic}"
             )
 
         return "\n".join(notes)
