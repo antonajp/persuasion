@@ -5,9 +5,7 @@ the LangGraph debate workflow, tracking all aspects of the conversation.
 """
 
 import logging
-from typing import Annotated, TypedDict
-
-from langgraph.graph.message import add_messages
+from typing import TypedDict
 
 from src.models.belief_graph import BeliefGraph
 from src.models.conversation import (
@@ -63,7 +61,7 @@ class ConversationState(TypedDict):
     """
 
     # Core conversation
-    messages: Annotated[list[ConversationMessage], add_messages]
+    messages: list[ConversationMessage]
     topic: str
     participant_names: list[str]
 
