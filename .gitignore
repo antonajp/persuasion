@@ -87,3 +87,5 @@ Thumbs.db
 
 # Project specific
 persuasion.db
+*_results.json
+results.json
